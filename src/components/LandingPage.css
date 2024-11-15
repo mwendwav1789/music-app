@@ -1,2 +1,12 @@
-a
+/* src/components/LandingPage.css */
+.landing-page {
+  text-align: center;
+  padding: 2rem;
+  background-color: #e0f7fa;
+}
+.landing-page h1 {
+  font-size: 2rem;
+  color: #00796b;
+}
+
 

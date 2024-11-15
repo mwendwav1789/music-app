@@ -1,38 +1,51 @@
-.App {
-  text-align: center;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Custom global styles for dark mode */
+@layer base {
+  body {
+    background-color: #1a202c; /* Dark background */
+    color: #edf2f7; /* Light text */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for dark mode */
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  h1,
+  h2,
+  h3,
+  p {
+    color: #edf2f7; /* Light text */
+  }
+
+  a {
+    color: #63b3ed; /* Light blue links */
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: #3182ce; /* Darker blue on hover */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Dark mode styles using Tailwind's built-in dark mode variant */
+@layer components {
+  .dark body {
+    background-color: #2d3748; /* Slightly darker background in dark mode */
+    color: #e2e8f0; /* Lighter text in dark mode */
   }
-  to {
-    transform: rotate(360deg);
+
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark p {
+    color: #e2e8f0; /* Light text in dark mode */
+  }
+
+  .dark a {
+    color: #63b3ed; /* Light blue links */
+  }
+
+  .dark a:hover {
+    color: #3182ce; /* Darker blue on hover in dark mode */
   }
 }

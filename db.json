@@ -1,0 +1,20 @@
+{
+  "tracks": [
+    {
+      "id": 1,
+      "name": "Ruby Rosary",
+      "genre": "Hip-Hop/Rap",
+      "dateAdded": "2024-09-06",
+      "length": 4.2,
+      "link": "https://open.spotify.com/track/1lloYB6uHOTDmheiWsq4DL?si=07ca9e20cbda44fd"
+    },
+    {
+      "id": 2,
+      "name": "Trojan Horse",
+      "genre": "Hip-Hop/Rap",
+      "dateAdded": "2023-06-04",
+      "length": 4.0,
+      "link": "https://open.spotify.com/track/2HALQBSAvpw1oCzL5QsrT2?si=34d59827f1b44c16"
+    }
+  ]
+}

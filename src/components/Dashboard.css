@@ -1,0 +1,36 @@
+/* Dashboard.css */
+
+/* Wrapper for the entire dashboard, setting a consistent background and spacing */
+.dashboard-container {
+  @apply min-h-screen p-6 bg-gray-900 text-gray-200;
+}
+
+/* Header styling for the dashboard */
+.dashboard-header {
+  @apply text-3xl font-bold mb-6 text-center text-white;
+}
+
+/* Card container for layout of cards in a grid */
+.dashboard-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+}
+
+/* Individual card styling */
+.dashboard-card {
+  @apply bg-gray-800 p-4 rounded-lg shadow-lg text-gray-200;
+}
+
+/* Title text within each card */
+.card-title {
+  @apply text-xl font-semibold text-white mb-2;
+}
+
+/* Value styling for stats or other data in each card */
+.card-value {
+  @apply text-3xl font-bold text-blue-500;
+}
+
+/* Button styles for actions within the dashboard */
+.dashboard-button {
+  @apply px-4 py-2 mt-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200;
+}

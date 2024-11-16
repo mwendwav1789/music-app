@@ -1,0 +1,18 @@
+{
+  "tracks": [
+    {
+      "id": 1,
+      "name": "Song One",
+      "genre": "Pop",
+      "link": "https://example.com/song-one",
+      "rating": 4
+    },
+    {
+      "id": 2,
+      "name": "Song Two",
+      "genre": "Rock",
+      "link": "https://example.com/song-two",
+      "rating": 5
+    }
+  ]
+}

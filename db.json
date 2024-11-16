@@ -1,18 +1,19 @@
 {
+  "users": [
+    {
+      "name": "mwendwa",
+      "email": "vmwendwa87@gmail.com",
+      "bio": "love music",
+      "id": "1"
+    }
+  ],
   "tracks": [
     {
-      "id": 1,
-      "name": "Song One",
-      "genre": "Pop",
-      "link": "https://example.com/song-one",
-      "rating": 4
-    },
-    {
-      "id": 2,
-      "name": "Song Two",
-      "genre": "Rock",
-      "link": "https://example.com/song-two",
-      "rating": 5
+      "id": "1",
+      "name": "Price Tags (feat. Anderson .Paak)",
+      "artist": "Jasmine Sullivan",
+      "genre": "RnB",
+      "link": "https://open.spotify.com/track/75VsCv6fqT24t6eDNP88r4?si=53ab9e7029454ab2"
     }
   ]
 }

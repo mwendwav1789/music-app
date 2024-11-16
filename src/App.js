@@ -1,81 +1,73 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import Form from "./components/Form"; // Add Form component
-import AdminActions from "./components/AdminActions"; // Add AdminActions component
+// src/App.js
+import React, { useState } from "react";
+import "./App.css"; // Import any global CSS
+import "animate.css";
+import LandingPage from "./components/LandingPage";
+import Dashboard from "./components/Dashboard";
+import Profile from "./components/Profile";
+import Form from "./components/Form";
+import TrackRating from "./components/TrackRating"; // Corrected path
+import MusicFilter from "./components/MusicFilter";
 
 function App() {
+  console.log("App component rendered"); // Track how often App is rendered
+
   const [tracks, setTracks] = useState([]);
+  const [filter, setFilter] = useState({});
 
-  // Fetch data from the backend
-  useEffect(() => {
-    fetch("http://localhost:5000/tracks")
-      .then((response) => response.json())
-      .then((data) => setTracks(data));
-  }, []);
-
-  // Function to handle adding a new track
-  const addTrack = (newTrack) => {
-    fetch("http://localhost:5000/tracks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newTrack),
-    })
-      .then((response) => response.json())
-      .then((addedTrack) => {
-        setTracks((prev) => [...prev, addedTrack]);
-      });
+  // Handle filter data (from MusicFilter component)
+  const handleFilterData = (data) => {
+    setFilter((prev) => ({
+      ...prev,
+      ...data,
+    }));
+    console.log("Current filter data:", filter); // It's okay to log here for debugging, but useEffect will give you better control
   };
 
-  // Handle deleting a track
-  const handleDelete = (id) => {
-    fetch(`http://localhost:5000/tracks/${id}`, { method: "DELETE" }).then(
-      () => {
-        setTracks((prev) => prev.filter((track) => track.id !== id));
-      }
-    );
-  };
-
-  // Handle editing a track
-  const handleEdit = (track) => {
-    const updatedTrack = { ...track, name: "Updated Track Name" }; // Example update
-    fetch(`http://localhost:5000/tracks/${track.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedTrack),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setTracks((prev) =>
-          prev.map((item) => (item.id === data.id ? data : item))
-        );
-      });
+  // Add a new track (from Form component)
+  const addTrack = (trackData) => {
+    const newTrack = { ...trackData, id: Date.now() };
+    setTracks((prevTracks) => [...prevTracks, newTrack]);
+    console.log("Track added:", newTrack);
   };
 
   return (
-    <div className="App">
-      <h1>Your Music Collection</h1>
-      <Form addTrack={addTrack} />
-      <ul>
-        {tracks.map((track) => (
-          <li key={track.id}>
-            <h2>{track.name}</h2>
-            <p>{track.genre}</p>
-            <a href={track.link} target="_blank" rel="noopener noreferrer">
-              Listen
-            </a>
-            <p>Rating: {track.rating}</p>
-            <AdminActions
-              track={track}
-              onDelete={handleDelete}
-              onEdit={handleEdit}
-            />
-          </li>
-        ))}
-      </ul>
+    <div className="App bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center">
+      <header className="App-header text-center py-8 w-full">
+        <h1 className="text-4xl font-extrabold text-white">
+          Welcome to the Music App
+        </h1>
+        <p className="mt-2 text-lg text-gray-300">
+          Explore, discover, and manage your favorite tracks!
+        </p>
+      </header>
+
+      <main className="py-12 px-4 md:px-12 w-full max-w-6xl mx-auto flex flex-col gap-12">
+        {/* Landing Page */}
+        <section>
+          <LandingPage />
+        </section>
+
+        {/* Dashboard */}
+        <section>
+          <Dashboard tracks={tracks} />
+        </section>
+
+        {/* Profile */}
+        <section>
+          <Profile />
+        </section>
+
+        {/* Add Track Form */}
+        <section>
+          <Form addTrack={addTrack} />
+        </section>
+
+        {/* Music Filter */}
+        <section>
+          <MusicFilter filterData={handleFilterData} />
+        </section>
+      </main>
     </div>
   );
 }
